@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.armida_tia.Pertemuan5.LimaActivity
 import com.example.armida_tia.databinding.ActivityLoginBinding
 import com.example.armida_tia.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -56,6 +57,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 .setCancelable(false)
                 .show()
+        }
+        binding.btnToLima.setOnClickListener {
+            startActivity(Intent(this, LimaActivity::class.java))
         }
     }
 }
