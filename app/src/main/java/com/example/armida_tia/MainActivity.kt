@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.armida_tia.Pertemuan5.LimaActivity
+import com.example.armida_tia.Pertemuan6.EnamActivity
 import com.example.armida_tia.databinding.ActivityLoginBinding
 import com.example.armida_tia.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -27,12 +29,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
         val user = intent.getStringExtra("Email")
         val pass = intent.getStringExtra("Password")
 
-        binding.txtemail.text = user
-        binding.txtpass.setText(pass)
 
         binding.btnsnackbar.setOnClickListener {
             Snackbar.make(binding.root, "Halo ini snackbar", Snackbar.LENGTH_LONG)
@@ -58,8 +58,26 @@ class MainActivity : AppCompatActivity() {
                 .setCancelable(false)
                 .show()
         }
+        binding.btnLogout.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Apakah Anda yakin ingin keluar?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+                    dialog.dismiss()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }
+                .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
         binding.btnToLima.setOnClickListener {
             startActivity(Intent(this, LimaActivity::class.java))
+        }
+        binding.btnToEnam.setOnClickListener {
+            startActivity(Intent(this, EnamActivity::class.java))
         }
     }
 }

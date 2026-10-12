@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,12 +17,13 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var  binding: ActivityLoginBinding // untuk definisikan activity login ke dalam binding
+    private lateinit var binding: ActivityLoginBinding // untuk definisikan activity login ke dalam binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityLoginBinding.inflate(layoutInflater) //untuk mengambil alih semua yang ad di dlm activity login
+        binding =
+            ActivityLoginBinding.inflate(layoutInflater) //untuk mengambil alih semua yang ad di dlm activity login
         setContentView(binding.root) // untuk menampilkannya
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -29,18 +31,33 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//        val btnLogin : Button = findViewById(R.id.btnlogin)
-//        val email : EditText = findViewById(R.id.edtemail)
-//        val password : EditText = findViewById(R.id.edtpassword)
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        // Kondisi jika isLogin bernilai true
+        val isLogin = sharedPref.getBoolean("isLogin", false)
+        if (isLogin) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
 
         binding.btnLogin.setOnClickListener {
             val user = binding.edtemail.text.toString()
             val pass = binding.edtpassword.text.toString()
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(this, "Kembali ke halaman Login", Toast.LENGTH_SHORT).show()
-        }
+            if (user.isNotEmpty() && user == pass) {
+                val editor = sharedPref.edit()
+                editor.putBoolean("isLogin", true)
+                editor.putString("username", user)
+                editor.apply()
+                startActivity(Intent(this, MainActivity::class.java))
 
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("Login Gagal")
+                    .setMessage("Silahkan coba lagi")
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
+        }
     }
 }
