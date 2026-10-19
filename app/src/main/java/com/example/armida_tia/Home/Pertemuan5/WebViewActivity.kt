@@ -1,39 +1,38 @@
-package com.example.armida_tia.Pertemuan6
+package com.example.armida_tia.Home.Pertemuan5
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.example.armida_tia.R
-import com.example.armida_tia.databinding.ActivityEnamBinding
+import com.example.armida_tia.databinding.ActivityWebViewBinding
 
-class EnamActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEnamBinding
+class WebViewActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWebViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityEnamBinding.inflate(layoutInflater)
+        binding= ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding.webView.webViewClient = WebViewClient()
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.loadUrl("https://bbc.com/")
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = "Halaman Pertemuan 6"
+            title = "Web BBC"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
-        // Setup event click untuk mengganti fragment
-        binding.btnFrag1.setOnClickListener { replaceFragment(SatuFragment()) }
-        binding.btnFrag2.setOnClickListener { replaceFragment(DuaFragment()) }
-        binding.btnFrag3.setOnClickListener { replaceFragment(TigaFragment()) }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -43,11 +42,5 @@ class EnamActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-    private fun replaceFragment(fragment: Fragment, addToBackStack: Boolean = true) {
-        val transaction = supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, fragment)
-        if (addToBackStack) transaction.addToBackStack(null)
-        transaction.commit()
     }
 }

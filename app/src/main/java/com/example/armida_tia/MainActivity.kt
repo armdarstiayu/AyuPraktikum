@@ -8,9 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.armida_tia.Pertemuan5.LimaActivity
-import com.example.armida_tia.Pertemuan6.EnamActivity
-import com.example.armida_tia.databinding.ActivityLoginBinding
+import com.example.armida_tia.Home.Pertemuan5.LimaActivity
+import com.example.armida_tia.Home.Pertemuan6.EnamActivity
 import com.example.armida_tia.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
