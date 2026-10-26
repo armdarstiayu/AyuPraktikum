@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.armida_tia.Home.Pertemuan5.LimaActivity
 import com.example.armida_tia.Home.Pertemuan6.EnamActivity
+import com.example.armida_tia.Home.Pertemuan9.NinthActivity
 import com.example.armida_tia.LoginActivity
 import com.example.armida_tia.MainActivity
 import com.example.armida_tia.databinding.FragmentHomeBinding
@@ -86,6 +87,9 @@ class HomeFragment : Fragment() {
         }
         binding.btnToEnam.setOnClickListener {
             startActivity(Intent(requireContext(), EnamActivity::class.java))
+        }
+        binding.btnToNine.setOnClickListener {
+            startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
     }
 }
