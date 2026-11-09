@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Home.HomeFragment"
-    android:background="#BDC07E">
+    android:background="#453737"
+    tools:context=".Home.HomeFragment">
 
     <View
         android:id="@+id/background_header"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:background="@drawable/bg_header_wave"
-        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="#D9D2BB"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/material_dynamic_primary80"
+        android:background="#D9D2BB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:subtitleTextColor="@android:color/white"
         app:titleTextColor="@android:color/white"
-        tools:layout_editor_absoluteX="32dp"/>
+        tools:layout_editor_absoluteX="32dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/henny_penny_regular"
         android:text="Halaman Main"
+        android:textColor="#FBFBFB"
         android:textSize="25sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +49,7 @@
         android:layout_width="256dp"
         android:layout_height="290dp"
         android:layout_marginBottom="308dp"
-        app:cardBackgroundColor="@color/material_dynamic_primary30"
+        app:cardBackgroundColor="#262323"
         app:cardCornerRadius="20sp"
         app:cardElevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,13 +61,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:background="#A89E9E">
 
             <Button
                 android:id="@+id/btnsnackbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/material_dynamic_primary90"
+                android:backgroundTint="#D9D2BB"
                 android:text="Snackbar"
                 android:textColorLink="@color/material_dynamic_primary30"
                 app:layout_constraintBottom_toTopOf="@+id/btnalert"
@@ -79,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="28dp"
-                android:backgroundTint="@color/material_dynamic_primary90"
+                android:backgroundTint="#D9D2BB"
                 android:text="Alert"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -94,49 +97,57 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         app:columnCount="3"
-        app:useDefaultMargins="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:useDefaultMargins="true">
 
-    <Button
-        android:id="@+id/btnToLima"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/material_dynamic_primary90"
-        android:text="P5"
-        app:layout_columnWeight="1"
-        app:layout_gravity="fill_horizontal"
-        />
+        <Button
+            android:id="@+id/btnToLima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D9D2BB"
+            android:text="P5"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal" />
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/material_dynamic_primary90"
-        android:text="Logout"
-        app:layout_columnWeight="1"
-        app:layout_gravity="fill_horizontal"
-        />
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D9D2BB"
+            android:text="Logout"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal" />
 
-    <Button
-        android:id="@+id/btnToEnam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/material_dynamic_primary90"
-        android:text="P6"
-        app:layout_columnWeight="1"
-        app:layout_gravity="fill_horizontal"
-       />
+        <Button
+            android:id="@+id/btnToEnam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D9D2BB"
+            android:text="P6"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal" />
 
-    <Button
-        android:id="@+id/btnToNine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="P9"
-        app:layout_columnWeight="1"
-        android:backgroundTint="@color/material_dynamic_primary90"
-        app:layout_gravity="fill_horizontal"
-        />
+        <Button
+            android:id="@+id/btnToNine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D9D2BB"
+            android:text="P9"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal" />
+
+        <Button
+            android:id="@+id/btnToTen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D9D2BB"
+            android:text="P10"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal" />
+
     </androidx.gridlayout.widget.GridLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

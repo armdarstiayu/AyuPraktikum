@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.armida_tia.Home.Pertemuan10.TenthActivity
 import com.example.armida_tia.Home.Pertemuan5.LimaActivity
 import com.example.armida_tia.Home.Pertemuan6.EnamActivity
 import com.example.armida_tia.Home.Pertemuan9.NinthActivity
@@ -90,6 +91,9 @@ class HomeFragment : Fragment() {
         }
         binding.btnToNine.setOnClickListener {
             startActivity(Intent(requireContext(), NinthActivity::class.java))
+        }
+        binding.btnToTen.setOnClickListener {
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
     }
 }
